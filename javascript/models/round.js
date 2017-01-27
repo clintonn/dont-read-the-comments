@@ -1,35 +1,48 @@
 class Round{
 
   constructor(){
+    let $roundText = $('#full-text')
     var $text_to_type = $("#text-to-type")
-    this.text = this.textSelection()
-    //this.textCheck = text.this.counter += 1
+    this.selectedText = this.textSelection()
     this.counter = 0
-    var displayText = `<span id="full-text">${this.text}</span>`
+    var displayText = `<span id="full-text">${this.selectedText.text}</span>`
     $text_to_type.append(displayText)
     this.setKeyCheck()
   }
   setKeyCheck(){
     var $inputArea = $('#typing-area')
-    $inputArea.keydown(function(event){
-      if (event.key === 'Backspace'){
-        alert("backspace, yo!")
-      }
-      else {
-        this.inputComparer(event)
+    $inputArea.keyup(function(event) {
+      if (event.key == "Backspace") {
+        console.log("Backspace pressed")
+        console.log(`Counter = ${this.counter}`)
+        if (this.counter > 0) {
+          this.counter -= 1
+        }
+        console.log(`Counter is now = ${this.counter}`)
       }
     }.bind(this))
+    $inputArea.keypress(function(event){
+        this.inputComparer(event)
+      }.bind(this))
   }
 
   textSelection(){
-    let texts = ["Donec ullamcorper nulla non metus auctor fringilla.", "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.", "Nullam id dolor id nibh ultricies vehicula ut id elit.", "Donec sed odio dui.", "Sed posuere consectetur est at lobortis."]
-    let randomSample = Math.round(Math.random() * texts.length)
+    let texts = [
+      new BadComment("Donec ullamcorper nulla non metus auctor fringilla."),
+      new BadComment("Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus."),
+      new BadComment("Nullam id dolor id nibh ultricies vehicula ut id elit."),
+      new BadComment("Donec sed odio dui.")
+  ]
+    let randomSample = Math.floor(Math.random() * texts.length)
     return texts[randomSample]
   }
 
    inputComparer(event){
-     debugger
-    if (event.key === this.text[this.counter]){
+    if (event.key === this.selectedText.inputText[this.counter]){
+      console.log("Right key!")
+
+      // !! how do we ignore keyup events that aren't chars?
+
       //set key color black
       //renderedArray[0] = `<span class="green">${inputArray[0]}</span>`
     //renderedArray.join("")
@@ -37,7 +50,7 @@ class Round{
       this.counter += 1
     }
     else {
-      //set key color red
+      console.log("Wrong key!")
       this.counter += 1
     }
   }

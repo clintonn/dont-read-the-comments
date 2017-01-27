@@ -9,14 +9,14 @@ $(document).ready(() => {
   $inputArea.keydown(function(event) {
     //debugger
     if (event.key === 'Backspace'){
-      // alert("backspace, yo!")
+
     }
     else {
       // alert("not a backspace, yo!")
     }
   });
 
-  const text = {display:"yolo yummy youtubezz", inputArray:display.split("")}
+  // const text = {display:"yolo yummy youtubezz", inputArray:display.split("")}
 
   // const texts = [
   //   {
