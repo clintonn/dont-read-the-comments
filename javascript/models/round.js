@@ -1,16 +1,14 @@
 class Round{
 
   constructor(){
-    var $text_to_type = $("#text-to-type")  
+    var $text_to_type = $("#text-to-type")
     this.text = this.textSelection()
     //this.textCheck = text.this.counter += 1
     this.counter = 0
-    var displayText = `<div>${this.text}</div>`
+    var displayText = `<span id="full-text">${this.text}</span>`
     $text_to_type.append(displayText)
     this.setKeyCheck()
   }
-
-
   setKeyCheck(){
     var $inputArea = $('#typing-area')
     $inputArea.keydown(function(event){
@@ -20,18 +18,21 @@ class Round{
       else {
         this.inputComparer(event)
       }
-    }.bind(this))  
+    }.bind(this))
   }
 
   textSelection(){
-    return "yolo yummy youtubezz"
+    let texts = ["Donec ullamcorper nulla non metus auctor fringilla.", "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.", "Nullam id dolor id nibh ultricies vehicula ut id elit.", "Donec sed odio dui.", "Sed posuere consectetur est at lobortis."]
+    let randomSample = Math.round(Math.random() * texts.length)
+    return texts[randomSample]
   }
 
    inputComparer(event){
-    if (event.key === this.text[counter]){
+     debugger
+    if (event.key === this.text[this.counter]){
       //set key color black
       //renderedArray[0] = `<span class="green">${inputArray[0]}</span>`
-    //renderedArray.join("") 
+    //renderedArray.join("")
     // and re-render on the screen somehow
       this.counter += 1
     }
@@ -41,10 +42,7 @@ class Round{
     }
   }
 
- 
+
 
 
 }
-
-
-

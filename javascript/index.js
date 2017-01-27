@@ -2,7 +2,9 @@ $(document).ready(() => {
   $('#start').click(function() {
     $('#main-menu').css("display", "none")
     $('#game-wrapper').css("display","block")
+    let round = new Round()
   })
+
   let $inputArea = $('#typing-area')
   $inputArea.keydown(function(event) {
     //debugger
@@ -13,10 +15,6 @@ $(document).ready(() => {
       // alert("not a backspace, yo!")
     }
   });
-
-function inputChecker(event){
-
-}
 
   const text = {display:"yolo yummy youtubezz", inputArray:display.split("")}
 
