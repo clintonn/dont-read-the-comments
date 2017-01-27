@@ -8,6 +8,8 @@ class Round{
     this.$textToType.append(this.selectedText.text)
     this.$inputArea = $('#typing-area')
     this.currentIndex = 0
+    // this.startTimer = new Timer(3, "STARTING IN")
+    $('#game-wrapper').css("display","block") // comment this out in production
     this.setKeyCheck()
   }
 
@@ -51,13 +53,4 @@ class Round{
     this.displayText = newDisplay
     this.$textToType.html(newDisplay.join(""))
   }
-
-  // setCurrentIndex() {
-  //   if ($('#typing-area').val().length == 0) {
-  //     this.$currentIndex = 0
-  //   } else {
-  //     this.$currentIndex = ($('#typing-area').val().length)
-  //   }
-  // }
-
 }
