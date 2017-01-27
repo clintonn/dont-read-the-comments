@@ -98,7 +98,12 @@ a {
   margin-top: 25%;
 }
 
+#round-timer{
+  font-size: 3em;
+  text-align: center;
+}
+
 #timer {
-  /* comment this out to display the timer div */
-  display: none;
+  /* comment this out to display the timer div 
+  display: none;*/
 }

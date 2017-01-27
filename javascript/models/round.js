@@ -8,9 +8,10 @@ class Round{
     this.$textToType.append(this.selectedText.text)
     this.$inputArea = $('#typing-area')
     this.currentIndex = 0
-    // this.startTimer = new Timer(3, "STARTING IN")
+    // this.startTimer = new Timer(3, "STARTING IN", "#countdown", ) 
     $('#game-wrapper').css("display","block") // comment this out in production
     this.setKeyCheck()
+    this.roundTimer = new Timer(10, "Go!", "#round-timer")
   }
 
   setKeyCheck() {
