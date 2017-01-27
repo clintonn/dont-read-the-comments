@@ -82,10 +82,11 @@ a {
 }
 
 .correct {
+  color: #79B473;
 }
 
 .incorrect {
-
+  color: #BB8588;
 }
 
 

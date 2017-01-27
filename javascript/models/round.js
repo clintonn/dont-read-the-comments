@@ -1,29 +1,19 @@
 class Round{
 
   constructor(){
-    let $roundText = $('#full-text')
-    var $text_to_type = $("#text-to-type")
+    this.$text_to_type = $("#text-to-type")
     this.selectedText = this.textSelection()
-    this.counter = 0
-    var displayText = `<span id="full-text">${this.selectedText.text}</span>`
-    $text_to_type.append(displayText)
+    this.displayText = this.selectedText.displayer
+    this.inputText = this.selectedText.inputText
+    this.$text_to_type.append(this.selectedText.text)
+    this.$roundText = $('#full-text')
+    this.$inputArea = $('#typing-area')
+    this.currentIndex = 0
     this.setKeyCheck()
   }
-  setKeyCheck(){
-    var $inputArea = $('#typing-area')
-    $inputArea.keyup(function(event) {
-      if (event.key == "Backspace") {
-        console.log("Backspace pressed")
-        console.log(`Counter = ${this.counter}`)
-        if (this.counter > 0) {
-          this.counter -= 1
-        }
-        console.log(`Counter is now = ${this.counter}`)
-      }
-    }.bind(this))
-    $inputArea.keypress(function(event){
-        this.inputComparer(event)
-      }.bind(this))
+
+  setKeyCheck() {
+    this.$inputArea.keypress(this.inputComparer.bind(this))
   }
 
   textSelection(){
@@ -37,25 +27,30 @@ class Round{
     return texts[randomSample]
   }
 
-   inputComparer(event){
-    if (event.key === this.selectedText.inputText[this.counter]){
-      console.log("Right key!")
-
-      // !! how do we ignore keyup events that aren't chars?
-
-      //set key color black
-      //renderedArray[0] = `<span class="green">${inputArray[0]}</span>`
-    //renderedArray.join("")
-    // and re-render on the screen somehow
-      this.counter += 1
-    }
-    else {
-      console.log("Wrong key!")
-      this.counter += 1
+   inputComparer(event, updateIndex){
+     this.updateCurrentIndex()
+     if (event.key === this.inputText[this.currentIndex]) {
+      console.log("Correct!")
+      this.displayText[this.currentIndex] = `<span class="correct">${this.inputText[this.currentIndex]}</span>`
+      this.$roundText.html(this.displayText.join(""))
+    } else {
+      debugger
+      console.log("Alternatively correct!")
+      this.displayText[this.currentIndex] = `<span class="incorrect">${this.inputText[this.currentIndex]}</span>`
+      this.$roundText.html(this.displayText.join(""))
     }
   }
 
+  updateCurrentIndex() {
+    this.currentIndex = this.$inputArea.val().length
+  }
 
-
+  // setCurrentIndex() {
+  //   if ($('#typing-area').val().length == 0) {
+  //     this.$currentIndex = 0
+  //   } else {
+  //     this.$currentIndex = ($('#typing-area').val().length)
+  //   }
+  // }
 
 }
