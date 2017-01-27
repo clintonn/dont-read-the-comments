@@ -1,8 +1,9 @@
 $(document).ready(() => {
   $('#start').click(function() {
     $('#main-menu').css("display", "none")
-    $('#game-wrapper').css("display","block")
+   
     let round = new Round()
+
   })
 
   let $inputArea = $('#typing-area')

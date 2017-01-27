@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <title>DON'T READ THE COMMENTS</title>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascript/models/timer.js"></script>
+
   <script type="text/javascript" src="javascript/models/round.js"></script>
   <script type="text/javascript" src="javascript/index.js"></script>
   <link rel="stylesheet" href="css/stylesheet.css">
@@ -14,15 +16,21 @@
     <h1 class="logo animated">Don't Read the Comments</h1>
     <a href="#" id="start">Click here to begin the game.</a>
   </div>
+
+    <div id="timer">
+      <div id="timer-text"></div>
+      <div id="countdown"></div>
+    </div>
+
   <div id="game-wrapper">
     <div id="text-gradient">
     </div>
+  
     <div id="wrapper">
+
       <div id="text-to-type">
-        <span id="full-text">
-        </span>
       </div>
-    </div>
+    </div> 
     <div class="full-width-wrapper">
       <div id="typing-area-wrapper">
         <input type="text" id="typing-area" name="" value="" autofocus="true" placeholder="Start typing here...">

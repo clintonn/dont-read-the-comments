@@ -1,9 +1,9 @@
 class Round{
 
   constructor(){
+    this.startTimer = new Timer(3, "STARTING IN")
     var $text_to_type = $("#text-to-type")
     this.text = this.textSelection()
-    //this.textCheck = text.this.counter += 1
     this.counter = 0
     var displayText = `<span id="full-text">${this.text}</span>`
     $text_to_type.append(displayText)
@@ -28,7 +28,6 @@ class Round{
   }
 
    inputComparer(event){
-     debugger
     if (event.key === this.text[this.counter]){
       //set key color black
       //renderedArray[0] = `<span class="green">${inputArray[0]}</span>`

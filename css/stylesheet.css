@@ -77,3 +77,10 @@ a {
   border: 0;
   border-bottom: 3px solid #666;
 }
+
+#countdown{
+  font-size: 3em;
+  text-align: center;
+  margin: auto;
+  margin-top: 25%;
+}
