@@ -1,12 +1,16 @@
 $(document).ready(() => {
+  $('#start').click(function() {
+    $('#main-menu').css("display", "none")
+    $('#game-wrapper').css("display","block")
+  })
   let $inputArea = $('#typing-area')
   $inputArea.keydown(function(event) {
     //debugger
     if (event.key === 'Backspace'){
-      alert("backspace, yo!")
+      // alert("backspace, yo!")
     }
     else {
-      alert("not a backspace, yo!")
+      // alert("not a backspace, yo!")
     }
   });
 
