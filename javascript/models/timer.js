@@ -7,11 +7,8 @@ class Timer {
     this.$timeEl = $(selector) // the element where time is shown
     this.$timeEl.css("display","block")
     this.$timeEl.text(displayText)
-    debugger
     this.seconds = (setInterval(this.countdown.bind(this), 1000))
-
   }
-
 
   countdown(){
     if (this.displayTime > 0){
@@ -22,15 +19,12 @@ class Timer {
       clearInterval(this.seconds)
       this.$timeEl.remove()
       $('#game-wrapper').css("display","block")
-      debugger
-      this.round.init()
+      if (this.round != null) {
+        this.round.init()
+      } else {
+        // something else should happen
+      }
     }
   }
-
-
-
-
-
-
 
 }

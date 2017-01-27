@@ -4,21 +4,20 @@ class Round{
     this.wpm = 0
     this.score = 0
     this.accuracy = 0.0
+    this.nextRound = nextRound
   }
 
   init() {
-    // $('#game-wrapper').css("display","block") // comment this out in production
-    let nextRound = new Round()
-    this.roundTimer = new Timer(10, "TIME LEFT:", "#round-timer", nextRound)
+    // add conditional here to make sure there's no rounds left, otherwise don't initialize a timer
+    this.roundTimer = new Timer(10, "TIME LEFT:", "#round-timer", this.nextRound)
     this.$textToType = $("#text-to-type")
     this.$inputArea = $('#typing-area')
+    debugger
 
-    this.selectedText = this.textSelection()
-    this.displayText = this.selectedText.displayer
-    this.inputText = this.selectedText.inputText
+    // this.displayText = this.displayer
+    // this.inputText = this.selectedText.inputText
     this.currentIndex = 0
 
-    // this.startTimer = new Timer(3, "STARTING IN", "#countdown", )
     $('#game-wrapper').css("display","block") // comment this out in production
     this.$textToType.append(this.selectedText.text)
     this.setKeyCheck()
@@ -31,17 +30,6 @@ class Round{
     })
     this.$inputArea.keypress(this.inputComparer.bind(this))
     this.$inputArea.keyup(this.updateText.bind(this))
-  }
-
-  textSelection(){
-    let texts = [
-      new BadComment("Donec ullamcorper nulla non metus auctor fringilla."),
-      new BadComment("Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus."),
-      new BadComment("Nullam id dolor id nibh ultricies vehicula ut id elit."),
-      new BadComment("Donec sed odio dui.")
-    ]
-    let randomSample = Math.floor(Math.random() * texts.length)
-    return texts[randomSample]
   }
 
   inputComparer(event){
