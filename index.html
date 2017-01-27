@@ -8,23 +8,19 @@
   <script type="text/javascript" src="javascript/models/badcomment.js"></script>
   <script type="text/javascript" src="javascript/models/timer.js"></script>
   <script type="text/javascript" src="javascript/models/round.js"></script>
+  <script type="text/javascript" src="javascript/models/game.js"></script>
   <script type="text/javascript" src="javascript/index.js"></script>
   <link rel="stylesheet" href="css/stylesheet.css">
   <link rel="stylesheet" href="css/animate.min.css">
 </head>
 <body>
+
+  <div id="round-timer">Filler</div>
+  <div id="countdown">Filler</div>
   <div id="main-menu" class="animated fadeInUp">
     <h1 class="logo sunset">Don't Read the Comments</h1>
     <a href="#" id="start">Click here to begin the game.</a>
   </div>
-
-    <div id="timer">
-      <div id="timer-text"></div>
-      <div id="countdown"></div>
-      <div id="round-timer"></div>
-    </div>
-
-
   <div id="game-wrapper">
 
     <!-- <div id="text-gradient">
@@ -38,6 +34,7 @@
     <div class="full-width-wrapper">
       <div id="typing-area-wrapper">
         <input type="text" id="typing-area" name="" value="" autofocus="true" placeholder="Start typing here...">
+        <button id="post-reply">↵</button>
       </div>
     </div>
   </div>

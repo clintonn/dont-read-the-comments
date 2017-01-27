@@ -1,14 +1,11 @@
 $(document).ready(() => {
   $('#start').click(function() {
     $('#main-menu').css("display", "none")
-   
-    let round = new Round()
-
+    let game = new Game(1)
   })
 
   let $inputArea = $('#typing-area')
   $inputArea.keydown(function(event) {
-    //debugger
     if (event.key === 'Backspace'){
 
     }

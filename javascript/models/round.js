@@ -1,20 +1,34 @@
 class Round{
 
   constructor(){
+    this.wpm = 0
+    this.score = 0
+    this.accuracy = 0.0
+  }
+
+  init() {
+    // $('#game-wrapper').css("display","block") // comment this out in production
+    let nextRound = new Round()
+    this.roundTimer = new Timer(10, "TIME LEFT:", "#round-timer", nextRound)
     this.$textToType = $("#text-to-type")
+    this.$inputArea = $('#typing-area')
+
     this.selectedText = this.textSelection()
     this.displayText = this.selectedText.displayer
     this.inputText = this.selectedText.inputText
-    this.$textToType.append(this.selectedText.text)
-    this.$inputArea = $('#typing-area')
     this.currentIndex = 0
-    // this.startTimer = new Timer(3, "STARTING IN", "#countdown", ) 
+
+    // this.startTimer = new Timer(3, "STARTING IN", "#countdown", )
     $('#game-wrapper').css("display","block") // comment this out in production
+    this.$textToType.append(this.selectedText.text)
     this.setKeyCheck()
-    this.roundTimer = new Timer(10, "Go!", "#round-timer")
   }
 
   setKeyCheck() {
+    this.$inputArea.keypress((event) => {
+      if (event.key == "Enter") {
+      }
+    })
     this.$inputArea.keypress(this.inputComparer.bind(this))
     this.$inputArea.keyup(this.updateText.bind(this))
   }
@@ -49,7 +63,6 @@ class Round{
   updateText(event) {
     this.updateCurrentIndex()
     let newDisplay = this.displayText.slice(0, this.currentIndex)
-    debugger
     newDisplay = newDisplay.concat(this.inputText.slice(this.currentIndex))
     this.displayText = newDisplay
     this.$textToType.html(newDisplay.join(""))
