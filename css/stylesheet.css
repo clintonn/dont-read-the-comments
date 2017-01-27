@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lusitana:400,700');
+@import url('https://fonts.googleapis.com/css?family=Lusitana:400,700|Source+Sans+Pro:200');
 
 body {
   font-family: 'Lusitana', 'Georgia', serif;
@@ -8,8 +8,32 @@ input {
   font-family: 'Lusitana', 'Georgia', serif;
 }
 
+.logo {
+  font-family: 'Source Sans Pro', 'Helvetica', sans-serif;
+  font-size: 3em;
+  -webkit-text-fill-color: transparent;
+  color: rgba(245,197,54,1);
+  background-image: linear-gradient(359deg, rgb(255, 180, 12) 0%, rgb(245, 0, 0) 100%);
+  -webkit-background-clip: text;
+}
+
 .full-width-wrapper {
   width: 100%;
+}
+
+#game-wrapper {
+  display: none;
+}
+
+#main-menu {
+  height: 100%;
+  text-align: center;
+  margin-top: 30vh;
+}
+
+a {
+  text-decoration: none;
+  color: orange;
 }
 
 #wrapper {
@@ -17,7 +41,7 @@ input {
   margin: 30vh 30vw 10vh 29vw;
 }
 
-#gradient-wrapper {
+#text-gradient {
   position: absolute;
   top: 25vh;
   left: 30vw;

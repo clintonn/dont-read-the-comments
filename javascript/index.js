@@ -1,5 +1,8 @@
 $(document).ready(() => {
-
+  $('#start').click(function() {
+    $('#main-menu').css("display", "none")
+    $('#game-wrapper').css("display","block")
+  })
   let $inputArea = $('#typing-area')
   $inputArea.keydown(function(event) {
     //debugger
