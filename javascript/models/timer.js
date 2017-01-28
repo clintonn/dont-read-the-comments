@@ -16,15 +16,14 @@ class Timer {
       this.displayTime -= 1
     }
     else {
-      clearInterval(this.seconds)
-      this.$timeEl.remove()
       $('#game-wrapper').css("display","block")
-      if (this.round != null) {
-        this.round.init()
-      } else {
-        // something else should happen
-      }
+      this.clearSelf()
     }
+  }
+
+  clearSelf() {
+    clearInterval(this.seconds)
+    this.$timeEl.css("display", "none")
   }
 
 }
