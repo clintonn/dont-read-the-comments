@@ -9,10 +9,24 @@ class Game {
   }
 
   init() {
-    let selectedTexts = this.textSelection()
-    let rounds = selectedTexts.map(comment => { return new Round()})
-    this.roundsCount = rounds.length
-    this.startTimer = new Timer(3, "STARTING IN", '#countdown', rounds[0])
+    //debugger
+    let selectedText = this.textSelection()
+    let round = new Round(selectedText, this)
+    this.rounds.push(round)
+    round.init()
+  }
+
+  roundCheck(){
+    if (this.rounds.length < 3){
+      this.init()
+    }
+    else {
+      console.log("end game")
+    }
+  }
+
+  endGame(){
+    alert("end game!!")
   }
 
   textSelection(){
@@ -22,11 +36,13 @@ class Game {
       new BadComment("Nullam id dolor id nibh ultricies vehicula ut id elit."),
       new BadComment("Donec sed odio dui.")
     ]
-    let comments = []
-    for (let i = 0; i < 2; i++) {
-      let randomSample = Math.floor(Math.random() * texts.length)
-      comments.push(texts[randomSample])
-    }
-    return rounds
+    return texts[Math.floor(Math.random() * texts.length)]
+
+    // let comments = []
+    // for (let i = 0; i < 2; i++) {
+    //   let randomSample = Math.floor(Math.random() * texts.length)
+    //   comments.push(texts[randomSample])
+    // }
+    // return rounds
   }
 }

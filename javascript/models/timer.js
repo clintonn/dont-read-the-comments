@@ -1,13 +1,15 @@
 class Timer {
 
-  constructor(time, displayText, selector, round){
-    this.round = round
+  constructor(time, displayText, selector, roundCheck){
+    this.roundCheck = roundCheck
     this.time = time // static time
     this.displayTime = time // dynamic time used for display
     this.$timeEl = $(selector) // the element where time is shown
     this.$timeEl.css("display","block")
     this.$timeEl.text(displayText)
+    this.roundCheck = roundCheck
     this.seconds = (setInterval(this.countdown.bind(this), 1000))
+    
   }
 
   countdown(){
@@ -17,13 +19,9 @@ class Timer {
     }
     else {
       clearInterval(this.seconds)
-      this.$timeEl.remove()
+      this.$timeEl.html("")
       $('#game-wrapper').css("display","block")
-      if (this.round != null) {
-        this.round.init()
-      } else {
-        // something else should happen
-      }
+      this.roundCheck()
     }
   }
 

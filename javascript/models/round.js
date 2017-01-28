@@ -1,31 +1,34 @@
 class Round{
 
-  constructor(){
+  constructor(selectedText, game){
     this.wpm = 0
     this.score = 0
     this.accuracy = 0.0
-    this.nextRound = nextRound
+    this.selectedText = selectedText
+    this.game = game
+    this.$textToType = $("#text-to-type")
+    this.$inputArea = $('#typing-area')
   }
 
   init() {
-    // add conditional here to make sure there's no rounds left, otherwise don't initialize a timer
-    this.roundTimer = new Timer(10, "TIME LEFT:", "#round-timer", this.nextRound)
-    this.$textToType = $("#text-to-type")
-    this.$inputArea = $('#typing-area')
-    debugger
-
-    // this.displayText = this.displayer
-    // this.inputText = this.selectedText.inputText
+    this.resetRound()
+    this.roundTimer = new Timer(2, "TIME LEFT:", "#round-timer", this.game.roundCheck.bind(this.game))
+    this.displayText = this.selectedText.displayer
+    this.inputText = this.selectedText.inputText
     this.currentIndex = 0
-
     $('#game-wrapper').css("display","block") // comment this out in production
     this.$textToType.append(this.selectedText.text)
     this.setKeyCheck()
   }
 
+  resetRound(){
+    this.$textToType.html("")
+  }
+
   setKeyCheck() {
     this.$inputArea.keypress((event) => {
       if (event.key == "Enter") {
+        alert("new round!!")
       }
     })
     this.$inputArea.keypress(this.inputComparer.bind(this))
