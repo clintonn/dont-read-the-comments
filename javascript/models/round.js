@@ -31,6 +31,7 @@ class Round{
     console.log("Firing off inputComparer!")
     this.updateCurrentIndex()
     if (event.key == this.inputText[this.currentIndex]) {
+      console.log("Correct!")
       this.displayText[this.currentIndex] = `<span class="correct">${this.inputText[this.currentIndex]}</span>`
       this.$textToType.html(this.displayText.join(""))
     } else {
