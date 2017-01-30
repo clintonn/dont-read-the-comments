@@ -3,7 +3,7 @@ class Game {
     this.numPlayers = numPlayers
     this.players = []
     this.currentRound = 0
-    this.init()
+    this.startTimer = new Timer(3, "STARTING IN", "#round-timer", this.init.bind(this))
   }
 
   init() {
@@ -22,8 +22,20 @@ class Game {
   }
 
   playRounds() {
-    this.rounds[this.currentRound].init(this.currentPlayer())
-    this.currentRound += 1
+    if (this.players.length == 1){
+      this.rounds[this.currentRound].init(this.currentPlayer())
+      this.currentRound += 1
+    }
+    else {
+      $("wrapper").css("display","none")
+        setTimeout(() => {
+          $("wrapper").css("display","block")
+          this.rounds[this.currentRound].init(this.currentPlayer())
+          this.currentRound += 1
+        }, 2000)
+    }
+
+    
   }
 
   currentPlayer(){
@@ -31,14 +43,17 @@ class Game {
       return this.players[0]
     }
     else if (this.currentRound % 2 == 0){
+      //this.playerSwitchCountdown("PLAYER 1")
       $("#show-player").text("Player 1")
       return this.players[0]
     }
     else {
+      //this.playerSwitchCountdown("PLAYER 1")
       $("#show-player").text("Player 2")
       return this.players[1]
     }
   }
+
 
   roundCheck(){
     if (this.currentRound < this.rounds.length){
