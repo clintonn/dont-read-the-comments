@@ -6,5 +6,6 @@ class BadComment {
     // ["H", "e" ...]
     this.displayer = this.inputText.slice()
     // exact copy of inputText, but to manipulate to be able to add span classes
+    this.wordLength = this.text.split(" ").length
   }
 }

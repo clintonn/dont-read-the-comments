@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lusitana:400,700|Source+Sans+Pro:200');
+@import url('https://fonts.googleapis.com/css?family=Lusitana:400,700|Source+Sans+Pro:200,400');
 
 body {
   font-family: 'Lusitana', 'Georgia', serif;
@@ -15,9 +15,13 @@ input {
   -webkit-background-clip: text;
 }
 
-.logo {
+.sans-serif {
   font-family: 'Source Sans Pro', 'Helvetica', sans-serif;
+}
+
+.logo {
   font-size: 3em;
+  font-weight: 200;
 }
 
 .full-width-wrapper {
@@ -35,13 +39,17 @@ input {
 }
 
 a {
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   text-decoration: none;
-  color: orange;
+}
+
+#start {
+  font-weight: bolder;
 }
 
 #wrapper {
   width: 50%;
-  margin: 30vh 30vw 10vh 27vw;
+  margin: 15vh 30vw 10vh 27vw;
 }
 
 #text-gradient {
@@ -61,7 +69,7 @@ a {
   width: 100%;
   height: 1.3em;
   white-space: nowrap;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 #typing-area-wrapper {
@@ -74,7 +82,7 @@ a {
   max-width: 40vw;
   outline: none;
   border: 0;
-  border-bottom: 3px solid #666;
+  /*border-bottom: 3px solid #666;*/
 }
 
 .correct {
@@ -106,6 +114,7 @@ a {
   display: none;
   font-size: 3em;
   text-align: center;
+  margin-top: 1em;
 }
 
 
@@ -121,4 +130,16 @@ button {
   position: relative;
   bottom: 0.5em;
   left: 1em;
+}
+
+.round-stats-wrapper {
+  text-align: center;
+  margin: 3em;
+}
+
+hr {
+  width: 10vw;
+  border-top: 1px dotted orange;
+  border-bottom: 1px dotted #fff;
+  text-align: center;
 }

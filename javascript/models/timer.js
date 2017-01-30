@@ -8,7 +8,6 @@ class Timer {
     this.$timeEl.css("display","block")
     this.$timeEl.text(displayText)
     this.seconds = (setInterval(this.countdown.bind(this), 1000))
-    
   }
 
   countdown(){
@@ -19,14 +18,14 @@ class Timer {
     else {
       $('#game-wrapper').css("display","block")
       this.clearSelf()
-      this.resetRound()    
+      this.resetRound()
     }
   }
 
   clearSelf(){
     //debugger
     clearInterval(this.seconds)
-    this.$timeEl.css("display", "none")  
+    this.$timeEl.css("display", "none")
   }
-  
+
 }
