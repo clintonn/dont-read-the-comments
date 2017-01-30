@@ -1,4 +1,4 @@
-class Round{
+class Round {
 
   constructor(selectedText, game){
     this.wpm = 0
@@ -13,11 +13,17 @@ class Round{
     this.currentIndex = 0
   }
 
-  init() { 
+  init() {
     $('#game-wrapper').css("display","block") // comment this out in production
     this.$textToType.append(this.selectedText.text)
-    this.roundTimer = new Timer(5, "TIME LEFT:", "#round-timer", this.resetRound.bind(this)) 
+    this.$textToType.scrollLeft(0)
+    this.roundTimer = new Timer(this.setTimeLimit(), "TIME LEFT:", "#round-timer", this.resetRound.bind(this))
     this.setKeyCheck()
+  }
+
+  setTimeLimit() {
+    return Math.ceil(this.selectedText.wordLength/40*60/5)*5
+    // nearest 5 rounded up, set 40 to custom wpm for modified diff
   }
 
   resetRound(){
@@ -26,7 +32,6 @@ class Round{
     this.$inputArea.val('')
     this.$textToType.html('')
     this.game.roundCheck()
-    
   }
 
   setKeyCheck() {
@@ -44,6 +49,14 @@ class Round{
       this.displayText[this.currentIndex] = `<span class="incorrect">${this.inputText[this.currentIndex]}</span>`
       this.$textToType.html(this.displayText.join(""))
     }
+    // this.scrollText(event)
+  }
+
+  scrollText(e) {
+    let chars = this.selectedText.text.length
+    let currentChars = this.$inputArea.val().length
+    let scrollWidth = this.$textToType.get(0).scrollWidth
+    this.$textToType.animate({scrollLeft: ((scrollWidth / chars) * currentChars) - (15 * scrollWidth / chars)}, 50)
   }
 
   updateCurrentIndex() {
@@ -54,13 +67,18 @@ class Round{
     if (event.key === "Enter") {
         this.$inputArea.off()
         this.resetRound()
-      } 
-    else {
+    } else {
       this.updateCurrentIndex()
       let newDisplay = this.displayText.slice(0, this.currentIndex)
       newDisplay = newDisplay.concat(this.inputText.slice(this.currentIndex))
       this.displayText = newDisplay
       this.$textToType.html(newDisplay.join(""))
+      this.scrollText(event)
+      this.calculateStats()
     }
+  }
+
+  calculateStats() {
+    debugger
   }
 }

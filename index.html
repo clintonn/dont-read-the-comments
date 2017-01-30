@@ -15,11 +15,11 @@
 </head>
 <body>
 
-  <div id="round-timer">Filler</div>
+  <div class="sunset sans-serif" id="round-timer">Filler</div>
   <div id="countdown">Filler</div>
   <div id="main-menu" class="animated fadeInUp">
-    <h1 class="logo sunset">Don't Read the Comments</h1>
-    <a href="#" id="start">Click here to begin the game.</a>
+    <h1 class="logo sans-serif sunset">Don't Read the Comments</h1>
+    <a href="#" class="sans-serif sunset" id="start">Click here to begin the game.</a>
   </div>
   <div id="game-wrapper">
 
@@ -35,6 +35,12 @@
       <div id="typing-area-wrapper">
         <input type="text" id="typing-area" name="" value="" autofocus="true" placeholder="Start typing here...">
         <button id="post-reply">↵</button>
+      </div>
+      <div class="round-stats-wrapper">
+        <h3 class="sans-serif sunset">Stats</h3>
+        <hr />
+        <p><span class="sunset sans-serif">WPM: </span> <span id="round-wpm"></span></p>
+        <p><span class="sunset sans-serif">Accuracy: </span> <span id="round-acc"></span></p>
       </div>
     </div>
   </div>
