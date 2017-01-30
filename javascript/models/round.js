@@ -17,6 +17,7 @@ class Round {
   init() {
     $('#game-wrapper').css("display","block") // comment this out in production
     this.$textToType.append(this.selectedText.text)
+    this.$inputArea.attr('maxlength', this.selectedText.text.length)
     this.$textToType.scrollLeft(0)
     this.roundTimer = new Timer(this.setTimeLimit(), "TIME LEFT:", "#round-timer", this.resetRound.bind(this))
     this.setKeyCheck()
@@ -51,8 +52,9 @@ class Round {
       this.errors++
       this.displayText[this.currentIndex] = `<span class="incorrect">${this.inputText[this.currentIndex]}</span>`
       this.$textToType.html(this.displayText.join(""))
+      this.$inputArea.toggleClass("animated shake")
+      setTimeout(() => {this.$inputArea.toggleClass("animated shake")}, 500)
     }
-    // this.scrollText(event)
   }
 
   scrollText(e) {

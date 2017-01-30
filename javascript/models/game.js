@@ -20,7 +20,7 @@ class Game {
   }
 
   roundCheck(){
-    if (this.currentRound < 5){
+    if (this.currentRound < this.rounds.length - 1){
       this.playRounds()
     }
     else {
@@ -29,14 +29,37 @@ class Game {
   }
 
   endGame(){
-    alert("u finished!!!")
+    this.hideGame()
+  }
+
+  hideGame() {
+    $('#round-timer').toggleClass("animated fadeOutDown")
+    $('#game-wrapper').toggleClass("animated fadeOutDown")
+    setTimeout(function() {
+      $('#round-timer').css("display", "none")
+      $('#game-wrapper').css("display", "none")
+      this.showResults()
+    }.bind(this), 500)
+  }
+
+  showResults() {
+    debugger
+    $('#final-wpm-player-1').css("display", "block")
+    $('#final-acc-player-1').css("display", "block")
+    if (this.players.length == 2) {
+      $('#final-wpm-player-2').css("display", "block")
+      $('#final-acc-player-2').css("display", "block")
+    }
+    $('#final-results').css("display", "block")
+    $('#final-results').toggleClass("animated fadeInUp")
   }
 
   textSelection(){
    let threads = [
       [
-        new BadComment("I have heard about the great wall of China and it seems Ike an amazing well. I am planning on visiting it but I don't know which country it's in. I've tried asking my friends but hey just gave me an angry look and walked away... I also asked my little sister and she just laughed. So where is it? Is it in like France at something?"),
-
+        new BadComment("I have heard about the great wall of China and it seems Ike an amazing well."),
+        new BadComment("I am planning on visiting it but I don't know which country it's in. I've tried asking my friends but hey just gave me an angry look and walked away..."),
+        new BadComment(" I also asked my little sister and she just laughed. So where is it? Is it in like France at something?"),
         new BadComment("Its actually in Engend, used by the tomens to keep the welsh out. half of It was moved to lhe USA In 1872.")
       ],
 
@@ -81,7 +104,8 @@ class Game {
         new BadComment("well he also starts his car at 8AM when i am still sleeping but 911 wont do nothing")
       ],
       [
-        new BadComment("The thing I really like about Planes is that we learn that WWII happened in the Cars universe. Which means there was a Cars Hitler, a Cars holocaust, a Cars Pacific War, a Cars D-Day, a Cars nuking of Hiroshima and Nagasaki, a Cars Rape of Nanking, a Cars Battle of Iwo Jima..."),
+        new BadComment("The thing I really like about Planes is that we learn that WWII happened in the Cars universe."),
+        new BadComment("Which means there was a Cars Hitler, a Cars holocaust, a Cars Pacific War, a Cars D-Day, a Cars nuking of Hiroshima and Nagasaki, a Cars Rape of Nanking, a Cars Battle of Iwo Jima..."),
         new BadComment("This leads to so many important questions, like: were the Cars Little Boy and Fat Man nukes sentient? Was it a suicide mission? Are ALL Cars nuclear weapons sentient? Did Tsar Bomba have a personality?"),
         new BadComment("What kind of car was Car Hitler? A VW? A forklift? Was there a Cars 9/11? Were the planes hijacked, or were the planes themselves radicalized? I could go on"),
         new BadComment("Edit: I just realized a Cars 9/11 gives a whole new layer of meaning to the phrase \"let's roll\"")

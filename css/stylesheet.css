@@ -143,3 +143,24 @@ hr {
   border-bottom: 1px dotted #fff;
   text-align: center;
 }
+
+#final-results {
+  text-align: center;
+  width: 30vw;
+  margin: 0 auto;
+  display: none;
+}
+
+.result-header {
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: .2rem;
+}
+
+.result {
+  font-size: 3em;
+}
+
+#final-wpm-player-1, #final-wpm-player-2, #final-acc-player-1, #final-acc-player-2 {
+  display: none;
+}
