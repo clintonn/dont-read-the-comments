@@ -3,7 +3,7 @@ class Game {
     this.numPlayers = numPlayers
     this.players = []
     this.currentRound = 0
-    this.init()
+    this.startTimer = new Timer(3, "STARTING IN", "#round-timer", this.init.bind(this))
   }
 
   init() {
@@ -22,8 +22,26 @@ class Game {
   }
 
   playRounds() {
-    this.rounds[this.currentRound].init(this.currentPlayer())
-    this.currentRound += 1
+    if (this.players.length == 1){
+      this.rounds[this.currentRound].init(this.currentPlayer())
+      this.currentRound += 1
+    }
+    else {
+      $('#round-timer').css("display", "none")
+      $("#game-wrapper").css("display","none")
+      $('#player-message').css("display", "block")
+      $('#player-message').text(`Your turn, player ${this.currentPlayer().playerNum}!`)
+        setTimeout(() => {
+          $('#round-timer').css("display", "block")
+          $('#player-message').css("display", "none")
+          $("wrapper").css("display","block")
+          this.rounds[this.currentRound].init(this.currentPlayer())
+          this.currentRound += 1
+          $('#typing-area').focus()
+        }, 2000)
+    }
+
+
   }
 
   currentPlayer(){
@@ -31,14 +49,17 @@ class Game {
       return this.players[0]
     }
     else if (this.currentRound % 2 == 0){
+      //this.playerSwitchCountdown("PLAYER 1")
       $("#show-player").text("Player 1")
       return this.players[0]
     }
     else {
+      //this.playerSwitchCountdown("PLAYER 1")
       $("#show-player").text("Player 2")
       return this.players[1]
     }
   }
+
 
   roundCheck(){
     if (this.currentRound < this.rounds.length){
@@ -78,11 +99,6 @@ class Game {
 
     $('div#final-results').css("display", "block")
     $('div#final-results').toggleClass("animated fadeInUp")
-
-    // let score = this.players.map(function(player){
-    //   return `Player ${player.playerNum}: ${player.wpm} wpm | ${player.averageAccuracy()} accuracy`
-    // })
-    // alert(`u finished!! ${score}`)
   }
 
   textSelection(){
