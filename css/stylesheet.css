@@ -128,6 +128,10 @@ button {
   border: none;
   padding: 0.5em 1em;
   position: relative;
+  cursor: pointer;
+}
+
+button #post-reply{
   bottom: 0.5em;
   left: 1em;
 }
@@ -147,7 +151,7 @@ hr {
 #final-results {
   text-align: center;
   width: 30vw;
-  margin: 0 auto;
+  margin: 15vh auto;
   display: none;
 }
 

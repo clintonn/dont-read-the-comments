@@ -88,16 +88,16 @@ class Game {
   textSelection(){
    let threads = [
       [
-        new BadComment("I have heard about the great wall of China and it seems Ike an amazing well."),
+        new BadComment("I have heard about the great wall of China and it seems like an amazing wall."),
         new BadComment("I am planning on visiting it but I don't know which country it's in. I've tried asking my friends but hey just gave me an angry look and walked away..."),
-        new BadComment(" I also asked my little sister and she just laughed. So where is it? Is it in like France at something?"),
-        new BadComment("Its actually in Engend, used by the tomens to keep the welsh out. half of It was moved to lhe USA In 1872.")
+        new BadComment("I also asked my little sister and she just laughed. So where is it? Is it in like France at something?"),
+        new BadComment("Its actually in Engend, used by the tomens to keep the welsh out. half of It was moved to the USA in 1872.")
       ],
 
       [
-        new BadComment("My mom is in the hospital after being struck more or less head on while a passenger in her friend's car. They were wearing their seatbelts and the airbags deployed so all four people in both cars are alive."),
+        new BadComment("My mom is in the hospital after being struck more or less head on while a passenger in her friend's car."),
 
-        new BadComment("She is staying the night at medical center in and is fully expecting to be discharged in the morning with nothing worse than cuts, bruises and maybe some cracked ribs. Yikes! Not enjoying these near misses lately!!"),
+        new BadComment("She is staying the night at the medical center and is fully expecting to be discharged in the morning with nothing worse than cuts, bruises and maybe some cracked ribs. Yikes! Not enjoying these near misses lately!!"),
 
         new BadComment("MEGAN THIS IS AUNT HELEN. I HAVE A FREIND AND WANTS TO ASK YOU SOMETHING. so HERE ISS HER LETTER TO You....."),
 
