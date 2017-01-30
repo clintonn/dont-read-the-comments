@@ -1,10 +1,6 @@
 class Round {
 
   constructor(selectedText, game){
-    this.wpm = 0
-    this.score = 0
-    this.accuracy = 0.0
-    this.errors = 0
     this.selectedText = selectedText
     this.game = game
     this.$textToType = $("#text-to-type")
@@ -33,14 +29,20 @@ class Round {
   }
 
   resetRound(){
+    //console.log(`${this.player.playerNum}, ${this.player.accuracy}`)
+    this.addAccuracy()
+    this.player.errors = 0
     clearInterval(this.roundTimer.seconds)
     clearInterval(this.wpmInterval)
+    $('#round-wpm').empty()
+    $('#round-acc').empty()
     this.$inputArea.off()
     this.$inputArea.val('')
     this.$textToType.html('')
     this.$showPlayer.empty()
     this.slideOut()
     this.game.roundCheck()
+
   }
 
   setKeyCheck() {
@@ -56,7 +58,7 @@ class Round {
       this.displayText[this.currentIndex] = `<span class="correct">${this.inputText[this.currentIndex]}</span>`
       this.$textToType.html(this.displayText.join(""))
     } else {
-      this.errors++
+      this.player.errors++
       this.displayText[this.currentIndex] = `<span class="incorrect">${this.inputText[this.currentIndex]}</span>`
       this.$textToType.html(this.displayText.join(""))
       this.$inputArea.toggleClass("animated shake")
@@ -102,15 +104,27 @@ class Round {
   findWPM() {
     let words = this.$inputArea.val().split(" ").length
     let elapsedTime = this.roundTimer.time - this.roundTimer.displayTime // seconds
-    return (words / elapsedTime * 60).toFixed()
+    this.player.wpm = (words / elapsedTime * 60).toFixed()
+    return this.player.wpm
   }
 
   findAcc() {
-    return ((1 - this.errors / this.selectedText.text.length) * 100).toFixed()
+    if (this.currentIndex == 0){
+      this.player.accuracy = 0
+    }
+    else {
+      this.player.accuracy = (((this.currentIndex - this.player.errors) / this.currentIndex) * 100).toFixed()
+    }
+    return this.player.accuracy
   }
+
 
   slideOut() {
     $('#typing-area-wrapper').toggleClass("animated bounceOutLeft")
     setTimeout(() => {$('#typing-area-wrapper').toggleClass("animated bounceOutLeft")}, 750)
+  }
+
+  addAccuracy(){
+    this.player.roundAccuracy.push(this.player.accuracy)
   }
 }

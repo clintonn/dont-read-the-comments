@@ -40,8 +40,6 @@ class Game {
     }
   }
 
-
-
   roundCheck(){
     if (this.currentRound < this.rounds.length){
       this.playRounds()
@@ -66,18 +64,25 @@ class Game {
   }
 
   showResults() {
-    $('#final-wpm-player-1 span').text(`${this.players[0].finalWpm} WPM`)
-    $('#final-acc-player-1 span').text(`${this.players[0].finalAccuracy}%`)
+    $('#final-wpm-player-1 span').text(`${this.players[0].wpm} WPM`)
+    $('#final-acc-player-1 span').text(`${this.players[0].accuracy}%`)
     $('div#final-wpm-player-1').css("display", "block")
     $('div#final-acc-player-1').css("display", "block")
+
     if (this.players.length == 2) {
-      $('#final-wpm-player-2 span').text(`${this.players[1].finalWpm} WPM`)
-      $('#final-acc-player-2 span').text(`${this.players[1].finalAccuracy}%`)
+      $('#final-wpm-player-2 span').text(`${this.players[1].wpm} WPM`)
+      $('#final-acc-player-2 span').text(`${this.players[1].accuracy}%`)
       $('div#final-wpm-player-2').css("display", "block")
       $('div#final-acc-player-2').css("display", "block")
     }
+
     $('div#final-results').css("display", "block")
     $('div#final-results').toggleClass("animated fadeInUp")
+
+    // let score = this.players.map(function(player){
+    //   return `Player ${player.playerNum}: ${player.wpm} wpm | ${player.averageAccuracy()} accuracy`
+    // })
+    // alert(`u finished!! ${score}`)
   }
 
   textSelection(){
@@ -145,6 +150,7 @@ class Game {
         new BadComment("But that's not what you said. You said a pupper is a doggo, which is not true unless you're okay with calling all members of the doggo family doggos, which means you'd call piggos, sluggos, and other species doggos, too. Which you said you don't."),
         new BadComment("It's okay to just admit you're wrong, you know?")
       ],
+
       [
         new BadComment("Do what you love and the money will follow. Our son is an artist in NYC and he makes 6K"),
         new BadComment("Wow a big 500 a month-- I hope that is 60k or 600k not 6000"),
@@ -155,7 +161,23 @@ class Game {
         new BadComment("it's funny how far a little gumption can take you if you have enough grit to see it through"),
         new BadComment("Oh my god Ken, answer the question"),
         new BadComment("one time he gave us a free tour of Central Park where he lives")
+      ],
+      [
+        new BadComment("This is dedicated to the cashier at the grocery store who made eye contact with me for half a second, what we had was real"),
+        new BadComment("I had an employee make eye contact with me inside of Home Depot four years ago...what we had was real.﻿"),
+        new BadComment("When someone is for you, you know it the second you see them or kiss them. unfortunately the circumstances of life are not kind.﻿")
+      ],
+      [
+        new BadComment("The nostalgia and memories while listening to this is INSANE! I remember listening to this endlessly while having love troubles with my teenage sweetheart Alexandra...."),
+        new BadComment("I have no idea where she is today. I haven't seen her in 10 years and have no clue where she is nor what she's up to. Hell, I don't even know if she's alive or not."),
+        new BadComment("Even though we were teenage sweethearts for ten years give or take in our childhood it's too bad we lost contact all because we grew up and went on different paths..."),
+        new BadComment("I feel you bro. I would love to know where my ex love is now too. Would you believe she's not on FB or Twitter?????﻿"),
+        new BadComment("I'm not really on those platforms, so no. I'm sure she's on there somewhere, but wouldn't it be a little bit creepy all of a sudden be like 'hehe remember meee!?'.. Idk…"),
+        new BadComment("lol just find her dude please...you just made me sad. just go find your teenage sweetheart not start something but to have a piece of mind its kind of liberating﻿"),
+        new BadComment("miracles do happen. Someone from my past just found me though I'm not on social media and he didn't know neither my second name nor email address! Aww those hot Italians... :) Good luck to you!﻿"),
+        new BadComment("Are you married now?﻿"),
       ]
+
     ]
 
     let randomSample = Math.floor(Math.random() * threads.length)
