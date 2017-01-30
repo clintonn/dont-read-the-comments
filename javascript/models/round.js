@@ -39,17 +39,20 @@ class Round {
     this.$inputArea.val('')
     this.$textToType.html('')
     this.$showPlayer.empty()
+    this.slideOut()
     this.game.roundCheck()
   }
 
   setKeyCheck() {
     this.$inputArea.keypress(this.inputComparer.bind(this))
     this.$inputArea.keyup(this.updateText.bind(this))
+    $('#post-reply').click(this.resetRound.bind(this))
   }
 
   inputComparer(event){
     this.updateCurrentIndex()
-    if (event.key === this.inputText[this.currentIndex]) {
+    if (event.key == "Enter") {}
+    else if (event.key === this.inputText[this.currentIndex]) {
       this.displayText[this.currentIndex] = `<span class="correct">${this.inputText[this.currentIndex]}</span>`
       this.$textToType.html(this.displayText.join(""))
     } else {
@@ -74,7 +77,6 @@ class Round {
 
   updateText(event) {
     if (event.key === "Enter") {
-        this.$inputArea.off()
         this.resetRound()
     } else {
       this.updateCurrentIndex()
@@ -105,5 +107,10 @@ class Round {
 
   findAcc() {
     return ((1 - this.errors / this.selectedText.text.length) * 100).toFixed()
+  }
+
+  slideOut() {
+    $('#typing-area-wrapper').toggleClass("animated bounceOutLeft")
+    setTimeout(() => {$('#typing-area-wrapper').toggleClass("animated bounceOutLeft")}, 750)
   }
 }

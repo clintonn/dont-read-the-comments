@@ -8,7 +8,6 @@ class Game {
 
   init() {
     this.assignPlayers(this.numPlayers)
-    //debugger
     let selectedTexts = this.textSelection()
     this.rounds = selectedTexts.map(comment => { return new Round(comment, this)})
     this.playRounds()
@@ -44,7 +43,7 @@ class Game {
 
 
   roundCheck(){
-    if (this.currentRound < this.rounds.length - 1){
+    if (this.currentRound < this.rounds.length){
       this.playRounds()
     }
     else {
@@ -145,6 +144,17 @@ class Game {
         new BadComment("Also, calling someone a human or an ape? It's not one or the other, that's not how taxonomy works. They're both. A pupper is a pupper and a member of the doggo family."),
         new BadComment("But that's not what you said. You said a pupper is a doggo, which is not true unless you're okay with calling all members of the doggo family doggos, which means you'd call piggos, sluggos, and other species doggos, too. Which you said you don't."),
         new BadComment("It's okay to just admit you're wrong, you know?")
+      ],
+      [
+        new BadComment("Do what you love and the money will follow. Our son is an artist in NYC and he makes 6K"),
+        new BadComment("Wow a big 500 a month-- I hope that is 60k or 600k not 6000"),
+        new BadComment("a 6K-figure job is enough to afford to live in NYC which is more than most people can say"),
+        new BadComment("I don't think you understand the question Ken- Is that he is making $6K a year? That is less than the part time guy handing out flyers makes"),
+        new BadComment("not sure what his take-home tax is but he is doing well for himself"),
+        new BadComment("Is it $6,000 or $60,000? That's what they're asking, Ken."),
+        new BadComment("it's funny how far a little gumption can take you if you have enough grit to see it through"),
+        new BadComment("Oh my god Ken, answer the question"),
+        new BadComment("one time he gave us a free tour of Central Park where he lives")
       ]
     ]
 
