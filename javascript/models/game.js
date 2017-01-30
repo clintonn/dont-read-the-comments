@@ -27,15 +27,21 @@ class Game {
       this.currentRound += 1
     }
     else {
-      $("wrapper").css("display","none")
+      $('#round-timer').css("display", "none")
+      $("#game-wrapper").css("display","none")
+      $('#player-message').css("display", "block")
+      $('#player-message').text(`Your turn, player ${this.currentPlayer().playerNum}!`)
         setTimeout(() => {
+          $('#round-timer').css("display", "block")
+          $('#player-message').css("display", "none")
           $("wrapper").css("display","block")
           this.rounds[this.currentRound].init(this.currentPlayer())
           this.currentRound += 1
+          $('#typing-area').focus()
         }, 2000)
     }
 
-    
+
   }
 
   currentPlayer(){
@@ -93,11 +99,6 @@ class Game {
 
     $('div#final-results').css("display", "block")
     $('div#final-results').toggleClass("animated fadeInUp")
-
-    // let score = this.players.map(function(player){
-    //   return `Player ${player.playerNum}: ${player.wpm} wpm | ${player.averageAccuracy()} accuracy`
-    // })
-    // alert(`u finished!! ${score}`)
   }
 
   textSelection(){

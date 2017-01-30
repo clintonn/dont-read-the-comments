@@ -164,3 +164,11 @@ hr {
 #final-wpm-player-1, #final-wpm-player-2, #final-acc-player-1, #final-acc-player-2 {
   display: none;
 }
+
+#player-message {
+  display: none;
+  text-align: center;
+  margin-top: 40vh;
+  font-size: 4em;
+  font-weight: 200;
+}
