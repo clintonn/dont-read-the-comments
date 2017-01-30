@@ -1,7 +1,7 @@
 $(document).ready(() => {
   $('#start').click(function() {
     $('#main-menu').css("display", "none")
-    let game = new Game(1)
+    let game = new Game(2)
   })
 
   let $inputArea = $('#typing-area')

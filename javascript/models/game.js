@@ -1,26 +1,50 @@
 class Game {
-  constructor(players) {
-    this.players = players
-    this.finalWpm = 0
-    this.finalAccuracy = 0
-    this.finalScore = 0
+  constructor(numPlayers) {
+    this.numPlayers = numPlayers
+    this.players = []
     this.currentRound = 0
     this.init()
   }
 
   init() {
+    this.assignPlayers(this.numPlayers) 
+    //debugger
     let selectedTexts = this.textSelection()
     this.rounds = selectedTexts.map(comment => { return new Round(comment, this)})
     this.playRounds()
+    
+  }
+
+  assignPlayers(numPlayers){
+    for (let i = 0; i < numPlayers; i++){
+      let playerNumber = i+1
+      this.players.push(new Player(playerNumber))
+    }
   }
 
   playRounds() {
-    this.rounds[this.currentRound].init()
+    this.rounds[this.currentRound].init(this.currentPlayer())
     this.currentRound += 1
   }
 
+  currentPlayer(){
+    if (this.players.length == 1){ 
+      return this.players[0]
+    }
+    else if (this.currentRound % 2 == 0){
+      $("#show-player").text("Player 1")
+      return this.players[0]
+    }
+    else {
+      $("#show-player").text("Player 2")
+      return this.players[1]
+    }
+  }
+
+
+
   roundCheck(){
-    if (this.currentRound < 5){
+    if (this.currentRound < 6){
       this.playRounds()  
     }
     else {
@@ -49,7 +73,7 @@ class Game {
     ]
 
     let roundText = []
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
       let randomSample = Math.floor(Math.random() * texts.length)
       roundText.push(texts[randomSample])
     }

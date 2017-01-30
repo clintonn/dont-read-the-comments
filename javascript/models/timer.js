@@ -24,6 +24,7 @@ class Timer {
   }
 
   clearSelf(){
+    //debugger
     clearInterval(this.seconds)
     this.$timeEl.css("display", "none")  
   }
