@@ -9,12 +9,15 @@ class Round {
     this.game = game
     this.$textToType = $("#text-to-type")
     this.$inputArea = $('#typing-area')
+    this.$showPlayer = $("#show-player")
     this.displayText = this.selectedText.displayer
     this.inputText = this.selectedText.inputText
     this.currentIndex = 0
   }
 
-  init() {
+
+  init(player) {
+    this.player = player
     $('#game-wrapper').css("display","block") // comment this out in production
     this.$textToType.append(this.selectedText.text)
     this.$inputArea.attr('maxlength', this.selectedText.text.length)
@@ -35,6 +38,7 @@ class Round {
     this.$inputArea.off()
     this.$inputArea.val('')
     this.$textToType.html('')
+    this.$showPlayer.empty()
     this.game.roundCheck()
   }
 

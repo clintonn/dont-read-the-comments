@@ -7,6 +7,7 @@
 
   <script type="text/javascript" src="javascript/models/badcomment.js"></script>
   <script type="text/javascript" src="javascript/models/timer.js"></script>
+  <script type="text/javascript" src="javascript/models/player.js"></script>
   <script type="text/javascript" src="javascript/models/round.js"></script>
   <script type="text/javascript" src="javascript/models/game.js"></script>
   <script type="text/javascript" src="javascript/index.js"></script>
@@ -34,6 +35,7 @@
       <div id="typing-area-wrapper">
         <input type="text" id="typing-area" name="" value="" autofocus="true" placeholder="Start typing here...">
         <button id="post-reply">↵</button>
+        <div id="show-player"></div>
       </div>
       <div class="round-stats-wrapper">
         <h3 class="sans-serif sunset">Stats</h3>
@@ -48,16 +50,16 @@
     <h1 class="sunset sans-serif">You've finished!</h1>
     <hr />
     <div id="final-wpm-player-1">
-      <h2 class="sans-serif"><span class="result-header sunset">Player 1 WPM</span></h2><span class="sans-serif result"></span>
+      <h2 class="sans-serif result-header sunset">Player 1 WPM</h2><span class="sans-serif result"></span>
     </div>
     <div id="final-acc-player-1">
-      <h2 class="sans-serif"><span class="result-header sunset">Player 1 Accuracy</span> </h2><span class="sans-serif result"></span>
+      <h2 class="sans-serif result-header sunset">Player 1 Accuracy</h2><span class="sans-serif result"></span>
     </div>
     <div id="final-wpm-player-2">
-      <h2 class="sans-serif"><span class="result-header sunset">Player 2 WPM</span></h2><span class="sans-serif result"></span>
+      <h2 class="sans-serif result-header sunset">Player 2 WPM</h2><span class="sans-serif result"></span>
     </div>
     <div id="final-acc-player-2">
-      <h2 class="sans-serif"><span class="result-header sunset">Player 2 Accuracy</span></h2><span class="sans-serif result"></span>
+      <h2 class="sans-serif result-header sunset">Player 2 Accuracy</h2><span class="sans-serif result"></span>
     </div>
   </div>
 
