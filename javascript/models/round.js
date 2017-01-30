@@ -4,6 +4,7 @@ class Round {
     this.wpm = 0
     this.score = 0
     this.accuracy = 0.0
+    this.errors = 0
     this.selectedText = selectedText
     this.game = game
     this.$textToType = $("#text-to-type")
@@ -19,6 +20,7 @@ class Round {
     this.$textToType.scrollLeft(0)
     this.roundTimer = new Timer(this.setTimeLimit(), "TIME LEFT:", "#round-timer", this.resetRound.bind(this))
     this.setKeyCheck()
+    this.wpmInterval = setInterval(this.displayWPM.bind(this), 1000)
   }
 
   setTimeLimit() {
@@ -28,6 +30,7 @@ class Round {
 
   resetRound(){
     clearInterval(this.roundTimer.seconds)
+    clearInterval(this.wpmInterval)
     this.$inputArea.off()
     this.$inputArea.val('')
     this.$textToType.html('')
@@ -45,7 +48,7 @@ class Round {
       this.displayText[this.currentIndex] = `<span class="correct">${this.inputText[this.currentIndex]}</span>`
       this.$textToType.html(this.displayText.join(""))
     } else {
-      console.log("Alternatively correct!")
+      this.errors++
       this.displayText[this.currentIndex] = `<span class="incorrect">${this.inputText[this.currentIndex]}</span>`
       this.$textToType.html(this.displayText.join(""))
     }
@@ -74,11 +77,27 @@ class Round {
       this.displayText = newDisplay
       this.$textToType.html(newDisplay.join(""))
       this.scrollText(event)
-      this.calculateStats()
+      this.displayAccuracy()
     }
   }
 
-  calculateStats() {
-    debugger
+  displayWPM() {
+    let currentWPM = this.findWPM()
+    $('#round-wpm').text(`${currentWPM}`)
+  }
+
+  displayAccuracy() {
+    let currentAcc = this.findAcc()
+    $('#round-acc').text(`${currentAcc}%`)
+  }
+
+  findWPM() {
+    let words = this.$inputArea.val().split(" ").length
+    let elapsedTime = this.roundTimer.time - this.roundTimer.displayTime // seconds
+    return (words / elapsedTime * 60).toFixed()
+  }
+
+  findAcc() {
+    return ((1 - this.errors / this.selectedText.text.length) * 100).toFixed()
   }
 }
